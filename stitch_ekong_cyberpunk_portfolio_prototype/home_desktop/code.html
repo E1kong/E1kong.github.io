@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EKONG | DIGITAL TERMINAL</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&amp;family=Space+Grotesk:wght@600;700&amp;family=Inter:wght@400;600&amp;family=Orbitron:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-high": "#2a292e",
+              "outline": "#849585",
+              "on-primary-container": "#007138",
+              "error-container": "#93000a",
+              "on-secondary-container": "#4f3100",
+              "inverse-on-surface": "#303034",
+              "on-primary": "#003919",
+              "background": "#050508",
+              "tertiary-fixed-dim": "#3ae27f",
+              "on-secondary-fixed-variant": "#633f00",
+              "outline-variant": "#3b4b3d",
+              "tertiary-container": "#5afb95",
+              "secondary-container": "#dc9100",
+              "primary-container": "#00ff87",
+              "primary": "#f1ffef",
+              "surface": "#131317",
+              "on-surface": "#e5e1e7",
+              "on-background": "#e5e1e7",
+              "secondary": "#ffb955",
+            },
+            fontFamily: {
+              "headline-lg": ["spaceGrotesk"],
+              "headline-xl": ["spaceGrotesk"],
+              "body-md": ["inter"],
+              "label-mono": ["jetbrainsMono"],
+              "orbitron": ["Orbitron"],
+            },
+            fontSize: {
+              "headline-lg": ["32px", { lineHeight: "1.2", fontWeight: "600" }],
+              "headline-xl": ["64px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "700" }],
+              "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+              "label-mono": ["14px", { lineHeight: "1.4", letterSpacing: "0.05em", fontWeight: "400" }],
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        :root {
+            --neon-green: #00ff87;
+            --accent-gold: #f5a623;
+            --bg-deep: #050508;
+            --bg-glow: #0a1a10;
+        }
+
+        body {
+            background: radial-gradient(circle at center, var(--bg-glow) 0%, var(--bg-deep) 100%);
+            overflow: hidden;
+            color: white;
+        }
+
+        /* Scanline Effect */
+        .scanlines {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            background-size: 100% 4px, 3px 100%;
+            pointer-events: none;
+            z-index: 100;
+            opacity: 0.15;
+        }
+
+        /* Black Hole Animations */
+        @keyframes rotate-outer {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 0.9; transform: scale(1.1); }
+        }
+
+        .black-hole-container {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .halo {
+            position: absolute;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(0, 255, 135, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
+            border-radius: 50%;
+            animation: pulse-glow 4s ease-in-out infinite;
+        }
+
+        .ring-outer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2px solid transparent;
+            border-top: 2px solid var(--neon-green);
+            border-right: 2px solid var(--neon-green);
+            border-radius: 50%;
+            animation: rotate-outer 10s linear infinite;
+        }
+
+        .ring-middle {
+            position: absolute;
+            width: 80%;
+            height: 80%;
+            background: conic-gradient(from 180deg at 50% 50%, #4a148c, #008080, #4a148c);
+            border-radius: 50%;
+            filter: blur(8px);
+            opacity: 0.8;
+            animation: rotate-outer 15s linear infinite reverse;
+        }
+
+        .ring-inner {
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            background: #000;
+            border-radius: 50%;
+            box-shadow: 0 0 40px 10px rgba(0,0,0,1);
+            z-index: 10;
+        }
+
+        /* Glitch Effect on Hover */
+        .glitch:hover {
+            animation: glitch-anim 0.3s cubic-bezier(.25,.46,.45,.94) both infinite;
+        }
+
+        @keyframes glitch-anim {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+
+        .glow-sm {
+            text-shadow: 0 0 10px rgba(0, 255, 135, 0.5);
+        }
+    </style>
+</head>
+<body class="font-body-md selection:bg-primary-container selection:text-on-primary-fixed">
+<div class="scanlines"></div>
+<!-- TopNavBar -->
+<nav class="fixed top-margin-safe right-margin-safe z-50 flex items-center gap-gutter px-6 py-3 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl rounded-xl border border-outline-variant/30 shadow-[0_0_15px_rgba(0,255,135,0.1)]">
+<div class="font-headline-lg text-headline-lg tracking-tighter text-primary dark:text-primary-fixed mr-8">EKONG</div>
+<div class="hidden md:flex gap-6 items-center">
+<a class="font-label-mono text-label-mono uppercase text-primary dark:text-primary-fixed font-bold border-b-2 border-primary transition-all duration-150 ease-in-out" href="#">[01] HOME</a>
+<a class="font-label-mono text-label-mono uppercase text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed hover:glow-sm transition-all duration-150 ease-in-out" href="#">[02] ABOUT</a>
+<a class="font-label-mono text-label-mono uppercase text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed hover:glow-sm transition-all duration-150 ease-in-out" href="#">[03] CONTACT</a>
+</div>
+<div class="md:hidden">
+<span class="material-symbols-outlined text-primary">menu</span>
+</div>
+</nav>
+<!-- Main Content: Centered Hero -->
+<main class="relative z-10 min-h-screen w-full flex flex-col items-center justify-center px-margin-safe">
+<!-- Focal Point: Black Hole Animation -->
+<div class="flex flex-col items-center gap-6 mb-12">
+<div class="black-hole-container">
+<div class="halo"></div>
+<div class="ring-outer"></div>
+<div class="ring-middle"></div>
+<div class="ring-inner"></div>
+</div>
+<p class="font-label-mono text-[10px] tracking-[0.3em] text-primary/50 uppercase">
+                [ ROTATING BLACK HOLE — CSS ANIMATION ]
+            </p>
+</div>
+<!-- Identity Section -->
+<div class="text-center">
+<h1 class="font-orbitron text-[56px] md:text-[80px] font-bold text-white tracking-widest uppercase mb-2 glitch cursor-default">
+                ekong
+            </h1>
+<p class="font-label-mono text-[13px] tracking-[0.2em] text-[#00ff87] mb-12">
+                // DESIGNER · DEVELOPER · CREATOR
+            </p>
+<!-- CTA -->
+<button class="bg-[#f5a623] hover:bg-[#ffcf40] text-[#050508] font-button-text py-4 px-12 rounded-none transition-all duration-300 transform active:scale-95 shadow-[0_0_20px_rgba(245,166,35,0.4)] hover:shadow-[0_0_35px_rgba(245,166,35,0.6)]">
+                CONTACT ME
+            </button>
+</div>
+<!-- Decorative Grid Lines -->
+<div class="absolute top-0 left-1/2 w-[1px] h-32 bg-gradient-to-b from-primary/20 to-transparent"></div>
+<div class="absolute bottom-0 left-1/2 w-[1px] h-32 bg-gradient-to-t from-primary/20 to-transparent"></div>
+<div class="absolute left-0 top-1/2 h-[1px] w-32 bg-gradient-to-r from-primary/20 to-transparent"></div>
+<div class="absolute right-0 top-1/2 h-[1px] w-32 bg-gradient-to-l from-primary/20 to-transparent"></div>
+</main>
+<!-- Footer -->
+<footer class="fixed bottom-0 left-0 w-full z-20 border-t border-primary/20 bg-transparent">
+<div class="w-full py-4 px-margin-safe flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto">
+<div class="font-label-mono text-[11px] text-outline mb-2 md:mb-0">
+                © 2024 EKONG_CORE. ALL RIGHTS RESERVED.
+            </div>
+<div class="flex gap-8">
+<a class="font-label-mono text-[11px] text-outline hover:text-primary duration-200 uppercase tracking-tighter" href="#">TERMINAL</a>
+<a class="font-label-mono text-[11px] text-outline hover:text-primary duration-200 uppercase tracking-tighter" href="#">SYSTEM_LOGS</a>
+<a class="font-label-mono text-[11px] text-outline hover:text-primary duration-200 uppercase tracking-tighter" href="#">ENCRYPTED_COMMS</a>
+</div>
+</div>
+</footer>
+<!-- Interactive Background Particles (Small Touch) -->
+<canvas class="fixed inset-0 pointer-events-none z-0" id="particleCanvas"></canvas>
+<script>
+        // Simple ambient particle effect for depth
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function init() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            particles = [];
+            for(let i = 0; i < 50; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 1.5,
+                    speed: Math.random() * 0.5 + 0.1,
+                    opacity: Math.random() * 0.5
+                });
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.y -= p.speed;
+                if(p.y < -10) p.y = canvas.height + 10;
+                ctx.fillStyle = `rgba(0, 255, 135, ${p.opacity})`;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', init);
+        init();
+        animate();
+
+        // Interaction logic for active state determined by prompt
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                // Micro-interaction sound or logic could go here
+                console.log('Navigating to system node...');
+            });
+        });
+    </script>
+</body></html>

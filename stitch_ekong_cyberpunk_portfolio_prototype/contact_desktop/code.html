@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EKONG // CONTACT</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        :root {
+            --bg-color: #050508;
+            --panel-bg: #0d0d14;
+            --panel-border: #1a1a2e;
+            --neon-green: #00ff87;
+            --neon-orange: #f5a623;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: #e5e1e7;
+            overflow-x: hidden;
+            background-image: 
+                linear-gradient(rgba(0, 255, 135, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 135, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .scanlines {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(
+                to bottom,
+                rgba(255, 255, 255, 0) 50%,
+                rgba(0, 0, 0, 0.05) 50%
+            );
+            background-size: 100% 4px;
+            z-index: 9999;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+
+        .glow-sm {
+            text-shadow: 0 0 10px rgba(0, 255, 135, 0.5);
+        }
+
+        .social-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-left: 0px solid var(--neon-green);
+        }
+
+        .social-card:hover {
+            border-color: var(--neon-green);
+            border-left-width: 4px;
+            transform: translateX(8px);
+            background: rgba(0, 255, 135, 0.05);
+        }
+
+        .bracket-label::before { content: '['; margin-right: 4px; color: var(--neon-green); }
+        .bracket-label::after { content: ']'; margin-left: 4px; color: var(--neon-green); }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface": "#131317",
+                        "primary": "#f1ffef",
+                        "primary-container": "#00ff87",
+                        "on-surface-variant": "#b9cbb9",
+                        "outline-variant": "#3b4b3d",
+                        "outline": "#849585",
+                        "secondary": "#ffb955",
+                        "on-primary-fixed": "#00210c"
+                    },
+                    spacing: {
+                        "unit": "4px",
+                        "gutter": "24px",
+                        "margin-safe": "32px",
+                        "container-max": "1200px"
+                    },
+                    fontFamily: {
+                        "headline-lg": ["Space Grotesk"],
+                        "label-mono": ["JetBrains Mono"],
+                        "body-md": ["Inter"]
+                    },
+                    fontSize: {
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "label-mono": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.05em" }],
+                        "body-md": ["16px", { "lineHeight": "1.6" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-body-md">
+<div class="scanlines"></div>
+<!-- TopNavBar Shell -->
+<nav class="fixed top-margin-safe right-margin-safe z-50 flex items-center gap-gutter px-6 py-3 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl rounded-xl border border-outline-variant/30 shadow-[0_0_15px_rgba(0,255,135,0.1)]">
+<div class="font-headline-lg text-headline-lg tracking-tighter text-primary dark:text-primary-fixed mr-4">EKONG</div>
+<div class="hidden md:flex gap-6">
+<a class="font-label-mono text-label-mono uppercase text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed hover:glow-sm transition-all active:scale-95 duration-150 ease-in-out" href="#">[01] HOME</a>
+<a class="font-label-mono text-label-mono uppercase text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed hover:glow-sm transition-all active:scale-95 duration-150 ease-in-out" href="#">[02] ABOUT</a>
+<a class="font-label-mono text-label-mono uppercase text-primary dark:text-primary-fixed font-bold border-b-2 border-primary hover:glow-sm transition-all active:scale-95 duration-150 ease-in-out" href="#">[03] CONTACT</a>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="min-h-screen pt-40 pb-20 px-margin-safe flex flex-col items-center">
+<div class="w-full max-w-[560px]">
+<!-- Header Section -->
+<header class="mb-12">
+<div class="font-label-mono text-label-mono text-primary-container mb-2">[ 03 ]</div>
+<h1 class="font-headline-lg text-headline-lg text-white inline-block relative pb-2">
+                    Contact
+                    <span class="absolute bottom-0 left-0 w-full h-[2px] bg-primary-container shadow-[0_0_10px_#00ff87]"></span>
+</h1>
+<p class="font-label-mono text-sm text-outline mt-6 opacity-80">// Find me on the following platforms</p>
+</header>
+<!-- Social Stack -->
+<div class="flex flex-col gap-4">
+<!-- Card: GitHub -->
+<a class="social-card group flex items-center justify-between p-6 bg-[#0d0d14] border border-outline-variant/30 rounded-sm" href="#">
+<div class="flex items-center gap-6">
+<span class="font-label-mono text-primary-container bracket-label text-sm font-bold">GH</span>
+<div class="flex flex-col">
+<span class="font-label-mono text-white text-lg tracking-wider">GITHUB</span>
+<span class="font-label-mono text-xs text-outline group-hover:text-primary-container transition-colors">@ekong_core</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-[#f5a623] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+<!-- Card: Twitter/X -->
+<a class="social-card group flex items-center justify-between p-6 bg-[#0d0d14] border border-outline-variant/30 rounded-sm" href="#">
+<div class="flex items-center gap-6">
+<span class="font-label-mono text-primary-container bracket-label text-sm font-bold">X_</span>
+<div class="flex flex-col">
+<span class="font-label-mono text-white text-lg tracking-wider">TWITTER / X</span>
+<span class="font-label-mono text-xs text-outline group-hover:text-primary-container transition-colors">@ekong_dev</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-[#f5a623] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+<!-- Card: LinkedIn -->
+<a class="social-card group flex items-center justify-between p-6 bg-[#0d0d14] border border-outline-variant/30 rounded-sm" href="#">
+<div class="flex items-center gap-6">
+<span class="font-label-mono text-primary-container bracket-label text-sm font-bold">LN</span>
+<div class="flex flex-col">
+<span class="font-label-mono text-white text-lg tracking-wider">LINKEDIN</span>
+<span class="font-label-mono text-xs text-outline group-hover:text-primary-container transition-colors">in/ekong-digital</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-[#f5a623] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+<!-- Card: Instagram -->
+<a class="social-card group flex items-center justify-between p-6 bg-[#0d0d14] border border-outline-variant/30 rounded-sm" href="#">
+<div class="flex items-center gap-6">
+<span class="font-label-mono text-primary-container bracket-label text-sm font-bold">IG</span>
+<div class="flex flex-col">
+<span class="font-label-mono text-white text-lg tracking-wider">INSTAGRAM</span>
+<span class="font-label-mono text-xs text-outline group-hover:text-primary-container transition-colors">@ekong.exe</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-[#f5a623] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<!-- Decorative Visual -->
+<div class="mt-16 pt-12 border-t border-outline-variant/20 flex justify-between items-start opacity-40">
+<div class="font-label-mono text-[10px] leading-tight">
+                    EST_CONNECTION: SECURE<br/>
+                    LOC: 40.7128° N, 74.0060° W<br/>
+                    SIGNAL: STABLE
+                </div>
+<div class="w-24 h-24 opacity-20 relative">
+<div class="absolute inset-0 border border-primary-container animate-pulse"></div>
+<div class="absolute inset-2 border border-secondary"></div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Shell -->
+<footer class="w-full py-gutter px-margin-safe bg-transparent border-t border-primary-container/20 mt-auto">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="font-label-mono text-label-mono text-primary opacity-80">© 2024 EKONG_CORE. ALL RIGHTS RESERVED.</div>
+<div class="flex gap-8">
+<a class="font-label-mono text-label-mono text-outline hover:text-primary-fixed duration-200 opacity-80 hover:opacity-100" href="#">TERMINAL</a>
+<a class="font-label-mono text-label-mono text-outline hover:text-primary-fixed duration-200 opacity-80 hover:opacity-100" href="#">SYSTEM_LOGS</a>
+<a class="font-label-mono text-label-mono text-outline hover:text-primary-fixed duration-200 opacity-80 hover:opacity-100" href="#">ENCRYPTED_COMMS</a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions for terminal-like text effect on hover
+        const cards = document.querySelectorAll('.social-card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                console.log('Handshake initiated...');
+            });
+        });
+    </script>
+</body></html>

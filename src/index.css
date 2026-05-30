@@ -1,0 +1,227 @@
+@import "tailwindcss";
+
+/* ─── Design Tokens ─────────────────────────────────────────── */
+@theme {
+  /* Backgrounds */
+  --color-background:               #050508;
+  --color-surface:                  #131317;
+  --color-surface-dim:              #131317;
+  --color-surface-bright:           #39393d;
+  --color-surface-container-lowest: #0e0e12;
+  --color-surface-container-low:    #1b1b1f;
+  --color-surface-container:        #1f1f23;
+  --color-surface-container-high:   #2a292e;
+  --color-surface-container-highest:#353439;
+
+  /* Text */
+  --color-on-surface:         #e5e1e7;
+  --color-on-surface-variant: #b9cbb9;
+
+  /* Borders */
+  --color-outline:         #849585;
+  --color-outline-variant: #3b4b3d;
+
+  /* Primary — Neon Green */
+  --color-primary:               #f1ffef;
+  --color-primary-container:     #00ff87;
+  --color-on-primary:            #003919;
+  --color-on-primary-container:  #007138;
+  --color-primary-fixed:         #60ff98;
+  --color-primary-fixed-dim:     #00e478;
+
+  /* Secondary — Gold */
+  --color-secondary:           #ffb955;
+  --color-secondary-container: #dc9100;
+
+  /* Fonts */
+  --font-sans:     "Inter", sans-serif;
+  --font-mono:     "JetBrains Mono", monospace;
+  --font-orbitron: "Orbitron", sans-serif;
+  --font-headline: "Space Grotesk", sans-serif;
+}
+
+/* ─── CSS Custom Properties ─────────────────────────────────── */
+:root {
+  --neon-green: #00ff87;
+  --accent-gold: #f5a623;
+  --bg-deep: #050508;
+  --bg-glow: #0a1a10;
+  --panel-bg: #0d0d14;
+  --panel-border: #1a1a2e;
+}
+
+/* ─── Global Reset ───────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: var(--bg-deep);
+  color: #e5e1e7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Scanlines Overlay ──────────────────────────────────────── */
+.scanlines {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background:
+    linear-gradient(rgba(18,16,16,0) 50%, rgba(0,0,0,0.25) 50%),
+    linear-gradient(90deg, rgba(255,0,0,0.03), rgba(0,255,0,0.01), rgba(0,0,255,0.03));
+  background-size: 100% 4px, 3px 100%;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0.15;
+}
+
+/* ─── Keyframe Animations ────────────────────────────────────── */
+@keyframes rotate-outer {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50%       { opacity: 0.9; transform: scale(1.1); }
+}
+
+@keyframes blink {
+  to { visibility: hidden; }
+}
+
+@keyframes glitch-anim {
+  0%   { transform: translate(0); }
+  20%  { transform: translate(-2px,  2px); }
+  40%  { transform: translate(-2px, -2px); }
+  60%  { transform: translate( 2px,  2px); }
+  80%  { transform: translate( 2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+/* ─── Black Hole ─────────────────────────────────────────────── */
+.black-hole-container {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bh-halo {
+  position: absolute;
+  width: 320px; height: 320px;
+  background: radial-gradient(circle, rgba(0,255,135,0.2) 0%, rgba(0,0,0,0) 70%);
+  border-radius: 50%;
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+.bh-ring-outer {
+  position: absolute;
+  width: 100%; height: 100%;
+  border: 2px solid transparent;
+  border-top: 2px solid var(--neon-green);
+  border-right: 2px solid var(--neon-green);
+  border-radius: 50%;
+  animation: rotate-outer 10s linear infinite;
+}
+
+.bh-ring-middle {
+  position: absolute;
+  width: 80%; height: 80%;
+  background: conic-gradient(from 180deg at 50% 50%, #4a148c, #008080, #4a148c);
+  border-radius: 50%;
+  filter: blur(8px);
+  opacity: 0.8;
+  animation: rotate-outer 15s linear infinite reverse;
+}
+
+.bh-ring-inner {
+  position: absolute;
+  width: 50%; height: 50%;
+  background: #000;
+  border-radius: 50%;
+  box-shadow: 0 0 40px 10px rgba(0,0,0,1);
+  z-index: 10;
+}
+
+/* ─── Glitch Hover ───────────────────────────────────────────── */
+.glitch:hover {
+  animation: glitch-anim 0.3s cubic-bezier(.25,.46,.45,.94) both infinite;
+}
+
+/* ─── Neon Text Glow ─────────────────────────────────────────── */
+.glow-sm {
+  text-shadow: 0 0 10px rgba(0,255,135,0.5);
+}
+
+/* ─── Social Cards ───────────────────────────────────────────── */
+.social-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-left: 0px solid var(--neon-green);
+}
+
+.social-card:hover {
+  border-color: var(--neon-green);
+  border-left-width: 4px;
+  transform: translateX(8px);
+  background: rgba(0, 255, 135, 0.05);
+}
+
+/* Bracket before/after on social card icons */
+.bracket-label::before { content: '['; margin-right: 4px; color: var(--neon-green); }
+.bracket-label::after  { content: ']'; margin-left:  4px; color: var(--neon-green); }
+
+/* ─── Blinking Cursor ────────────────────────────────────────── */
+.custom-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 1.2em;
+  background-color: var(--neon-green);
+  animation: blink 1s infinite steps(2, start);
+  vertical-align: middle;
+  margin-left: 4px;
+}
+
+/* ─── L-Bracket Corner Decoration ───────────────────────────── */
+.bracket-corner::before {
+  content: '';
+  position: absolute;
+  top: -1px; left: -1px;
+  width: 10px; height: 10px;
+  border-top: 2px solid var(--neon-green);
+  border-left: 2px solid var(--neon-green);
+}
+
+/* ─── Tech Grid Background (About) ──────────────────────────── */
+.tech-grid {
+  background-image:
+    linear-gradient( 45deg, rgba(26,26,46,0.05) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(26,26,46,0.05) 25%, transparent 25%),
+    linear-gradient( 45deg, transparent 75%, rgba(26,26,46,0.05) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(26,26,46,0.05) 75%);
+  background-size: 40px 40px;
+  background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+}
+
+/* ─── Rotated Ghost Text ─────────────────────────────────────── */
+.rotated-ghost {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  color: #1a1a2e;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ─── About Row Hover Letter-Spacing ────────────────────────── */
+.info-row:hover .info-label {
+  letter-spacing: 0.3em;
+}
+
+/* ─── Material Symbols ───────────────────────────────────────── */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
